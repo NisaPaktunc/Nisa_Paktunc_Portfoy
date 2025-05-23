@@ -1,25 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import About from './components/About';
-import Skills from './components/Skills';
-import Portfolio from './components/Portfolio';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  const toggleDarkMode = () => setDarkMode(dm => !dm);
   return (
-    <div className="App">
-      <Navbar />
-      <main>
-        <Home />
-        <About />
-        <Skills />
-        <Portfolio />
-        <Contact />
-      </main>
-      <Footer />
+    <div className={`App${darkMode ? ' dark' : ''}`}>
+      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <Home />
     </div>
   );
 }
